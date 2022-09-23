@@ -25,10 +25,9 @@ public class StudentInputParser {
 	public List<Student> parseCSVFile(String filePath) {
 		List<Student> list = new ArrayList<>();
 		// TODO: write code to read file line by line and parse the line.
-
-		try (BufferedReader bufferedReader = new BufferedReader(null);) {
-			File file = new File(filePath);
-			bufferedReader = new BufferedReader(new FileReader(file));
+//		BufferedReader bufferedReader = null;
+		try(FileReader fr = new FileReader(filePath)) {
+			BufferedReader bufferedReader = new BufferedReader(fr);
 			String line;
 			while ((line = bufferedReader.readLine()) != null) {
 
@@ -42,18 +41,8 @@ public class StudentInputParser {
 			throw new RuntimeException(ioException);
 		} catch (Exception exception) {
 			throw new RuntimeException(exception);
-		} finally {
-			try {
-				bufferedReader.close();
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
 		}
 		return list;
 	}
 
 }
-
-// make method private
-// buffered reader
-// 

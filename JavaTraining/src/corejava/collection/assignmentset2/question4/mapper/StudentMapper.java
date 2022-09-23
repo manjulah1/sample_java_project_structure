@@ -6,11 +6,11 @@ public class StudentMapper {
 	public static Student map(String data) {
 		String[] arrData = data.split(",");
 		try {
-		Integer studId = Integer.parseInt(arrData[0]);
-		String studSubject = arrData[1];
-		Integer studMarks = Integer.parseInt(arrData[2]);
+		Integer studentId = Integer.parseInt(arrData[0]);
+		String studentSubject = arrData[1];
+		Integer studentMarks = Integer.parseInt(arrData[2]);
 		
-		Student student = new Student(studId, studSubject, studMarks);
+		Student student = new Student(studentId, studentSubject, studentMarks);
 		return student;
 		} catch(NumberFormatException numberFormatException) {
 			throw new RuntimeException(numberFormatException);

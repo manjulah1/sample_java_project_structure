@@ -11,10 +11,10 @@ public class AverageMarksCalculator {
 	}
 
 	// get lowest id from the list of students
-	private Integer getLowestIdFromTheListOfStudents() {
+	public Integer getLowestIdFromTheListOfStudents() {
 		Integer lowestId = studentList.get(0).getStudentId();
-		for(Student student: studentList) {
-			if(student.getStudentId() < lowestId) {
+		for (Student student : studentList) {
+			if (student.getStudentId() < lowestId) {
 				lowestId = student.getStudentId();
 			}
 		}
@@ -25,23 +25,8 @@ public class AverageMarksCalculator {
 	public Double getAverageMarksForTheStudent(Integer id) {
 		Integer sum = 0;
 		int count = (int) studentList.stream().filter(student -> student.getStudentId().equals(id)).count();
-		for(Student student: studentList) {
-			if(student.getStudentId() == id) {
-				sum += student.getStudentMarks();
-			}
-		}
-		return (double) (sum/count);
+		sum = (Integer) studentList.stream().filter(student -> student.getStudentId().equals(id))
+				.mapToInt(student -> student.getStudentMarks()).sum();
+		return (double) (sum / count);
 	}
-	
-//	@Override
-//	public String toString() {
-//		StringBuilder sb = new StringBuilder();
-//		String newline = System.lineSeparator();
-//		for (String studentInfo : studentData) {
-//			sb.append(studentInfo);
-//			sb.append(newline); // find what should be the better way for new line character
-//		}
-//		return sb.toString();
-//	}
-
 }

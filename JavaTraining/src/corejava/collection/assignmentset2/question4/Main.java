@@ -1,5 +1,7 @@
 package corejava.collection.assignmentset2.question4;
 
+import java.lang.reflect.Method;
+
 import java.util.List;
 
 import corejava.collection.assignmentset2.question4.model.Student;
@@ -19,6 +21,12 @@ public class Main {
 
 			// get lowest id from the list of students
 			final Integer lowestId = averageMarksCalculator.getLowestIdFromTheListOfStudents();
+			
+//			Class cls = Class.forName("AverageMarksCalculator");
+//			Object object = cls.newInstance();
+//			Method method = cls.getDeclaredMethod("getLowestIdFromTheListOfStudents");
+//			method.setAccessible(true);
+//			final Integer lowestId = (Integer) method.invoke(object);
 
 			// get average marks for the student having lowest id
 			final Double average = averageMarksCalculator.getAverageMarksForTheStudent(lowestId);
